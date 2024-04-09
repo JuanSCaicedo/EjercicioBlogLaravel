@@ -14,7 +14,7 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-    
+
     public function categorias()
     {
         return $this->belongsTo('App\Models\Categoria');
@@ -24,5 +24,11 @@ class Post extends Model
     public function image()
     {
         return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    //Relacion uno a mucho polimorfica
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
 }
