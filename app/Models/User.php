@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Profile;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -76,5 +78,10 @@ class User extends Authenticatable
     public function videos()
     {
         return $this->hasMany('App\Models\Video');
+    }
+    //Relacion muchos a muchos
+    public function roles()
+    {
+        return $this->BelongsToMany('App\Models\Role');
     }
 }
